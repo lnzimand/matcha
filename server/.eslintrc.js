@@ -19,5 +19,7 @@ module.exports = {
     'vue',
   ],
   'rules': {
+	'semi': ['error', 'always'],
+	'quotes': ['error', 'double']
   },
 };
