@@ -1,4 +1,4 @@
-# matcha
+# client
 
 > A Vue.js project
 

@@ -1,16 +1,20 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const morgan = require("morgan");
-const config = require("./config/config");
-const dbConnection = require("./config/index");
+import express from "express";
+// import path from "path";
+import {json} from "body-parser";
+import cors from "cors";
+import morgan from "morgan";
+import "dotenv/config";
+import {dbSetup} from "./dbConnection/dbSetup";
 
 const app = express();
+dbSetup();
 
 app.use(morgan("combined"));
-app.use(bodyParser.json());
+app.use(json());
 app.use(cors());
 
 require("./routes")(app);
 
-app.listen(config.port);
+app.listen(process.env.PORT || 8081, () => {
+  console.log(`Server listening on port: ${process.env.PORT}`);
+});

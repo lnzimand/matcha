@@ -1,6 +1,13 @@
-const {register} = require("./controllers/AuthenticationController");
+import {registerMiddleware} from "./policies/registrationPolicies";
+import {loginMiddleware} from "./policies/loginPolicies";
+import {register} from "./controllers/registrationController";
+import {login} from "./controllers/loginController";
 
 module.exports = (app) => {
   app.post("/register",
-    register);
+      registerMiddleware,
+      register);
+  app.post("/login",
+      loginMiddleware,
+      login);
 };

@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <router-view/>
+    <v-app>
+      <v-content>
+        <page-header v-if="['register', 'login'].indexOf($route.name) > -1"/>
+        <main>
+          <v-container fluid>
+            <router-view/>
+          </v-container>
+        </main>
+      </v-content>
+    </v-app>
   </div>
 </template>
 
 <script>
+import PageHeader from '@/components/Header.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    PageHeader
+  }
 }
 </script>
 
